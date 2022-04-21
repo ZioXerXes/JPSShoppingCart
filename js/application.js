@@ -1,15 +1,33 @@
-var updateItemTotal = function (ele) {
-  var quantitySelect = parseFloat($(ele).find('.quantity input').val());
-  var priceSelect = parseFloat($(ele).children('.price').text());
-        
-  var itemTotal = quantitySelect * priceSelect;
-  $(ele).children('.total').text("$" + itemTotal);
+var sum = function (acc, x) {
+  return acc + x;
+};
 
-  return itemTotal;
+var updateItemTotal = function (ele) {
+  var priceNumber = parseFloat($(ele).children('.price').text());
+  var quantityNumber = parseFloat($(ele).children('.quantity').text());
+  var totalPrice = priceNumber * quantityNumber;
+  $(ele).children('.total').html(totalPrice);
+  
+  return totalPrice;
+}
+
+var addEverything = function () {
+  var totalBill = [];
+
+  $('tbody tr').each(function (i, ele) {
+    var itemTotal = updateItemTotal(ele);
+    totalBill.push(itemTotal);
+  });
+
+    var addEmUp = totalBill.reduce(sum);
+    $('.completeTotal').html(addEmUp);
 };
 
 $(document).ready(function () {
-  $('tbody tr').each(function (i, ele) {
-    //updateItemTotal(ele);    
-    });
+  addEverything();
+
+  $('.btn.remove').on('click', function (event) {
+    $(this).closest('tr').remove();
+    addEverything();
+  });
 });
