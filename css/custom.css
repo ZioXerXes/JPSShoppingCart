@@ -1,0 +1,38 @@
+
+
+h1 {
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.btn {
+  background-color: rgb(123, 123, 180);
+  color:rgb(210, 211, 152);
+}
+
+#addGroceryButton {
+  margin-right: 10px;
+  padding-left: 0px;
+}
+
+thead, .name, .price, .total, input[type="number"], #addGrocery, #grandTotal, .btn  {
+  font-family: 'Marcellus', serif;
+  font-weight: bold;
+}
+
+thead {
+  font-size: 1.5em;
+}
+
+#grandTotal {
+  display: flex;
+  justify-content: space-around;
+}
+
+h3 {
+  margin-top: 0px;
+  font-size: 30px;
+}
+
+body {
+  background-image: url("https://images.unsplash.com/photo-1586075010923-2dd4570fb338?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGFwZXIlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+};

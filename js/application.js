@@ -36,7 +36,7 @@ $(document).ready(function () {
     clearTimeout(timeout);
     timeout = setTimeout(function () {
       addEverything();
-    }, 250);
+    }, 100);
   });
 
   $('.btn.remove').on('click', function (event) {
@@ -46,8 +46,8 @@ $(document).ready(function () {
 
   $('#addGrocery').on('submit', function (event) {
     event.preventDefault();
-    var name = $(this).children('[name=item]').val();
-    var price = $(this).children('[name=price]').val();
+    var name = $(this).children().children('[name=item]').val();
+    var price = $(this).children().children('[name=price]').val();
 
     $('tbody').append('<tr>' +
     '<td class="name col-xs-3">' + name + '</td>' +

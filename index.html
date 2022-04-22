@@ -10,8 +10,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="js/application.js"></script>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Marcellus&display=swap" rel="stylesheet">    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
   </head>
   <body>
@@ -97,12 +98,18 @@
           </table>
           <row class="col-12">
           <form class="col-12 mt-2 mb-4" id="addGrocery">
-            <input class="px-4 col-xs-3" name="item" type="text" placeholder="Name" required />
-            <input class="px-4 col-xs-3" name="price" type="text" placeholder="Price" required />
-            <button class="px-4 btn btn-primary btn-sm col-xs-2">add</button> 
+            <div class="mx-4 col-xs-3" id="addGroceryButton"> 
+              <input name="item" type="text" placeholder="Name" required />
+            </div>
+            <div class="mx-4 col-xs-3" id="addGroceryButton"> 
+              <input name="price" type="text" placeholder="Price" required />
+            </div>
+            <div class="px-4 mx-4 col-xs-3" id="addGroceryButton"> 
+              <button class="btn btn-primary btn-sm">Add</button>
+            </div>
           </form>
           </row>
-          <div class="col-12 col-md-6">
+          <div class="col-12" id="grandTotal">
             <h3>Total Price: $<span class="completeTotal"></span></h3>
           </div>
         </div>
