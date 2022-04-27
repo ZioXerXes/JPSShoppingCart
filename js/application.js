@@ -5,6 +5,9 @@ var sum = function (acc, x) {
 var updateItemTotal = function (ele) {
   var priceNumber = parseFloat($(ele).children('.price').text());
   var quantityNumber = parseFloat($(ele).find('.quantity input').val());
+  if (quantityNumber == NaN) {
+    $(ele).find('.quantity input').val(0);
+  };
   console.log(quantityNumber)
   var totalPrice = priceNumber * quantityNumber;
   $(ele).children('.total').html(totalPrice);
@@ -32,10 +35,20 @@ $(document).on('click', '.btn.remove', function (event) {
 $(document).ready(function () {
   addEverything();
 
+  var defaulter = function () {
+    var quantitySelector = document.querySelector('input[name="realQuantity"]');
+    var totalSelector = $('td.total').text();
+    if (!quantitySelector.value) {
+      quantitySelector.value = '0';
+    };
+    updateItemTotal();
+  };
+  
   var timeout;
   $(document).on('input', 'tr input', function () {
     clearTimeout(timeout);
     timeout = setTimeout(function () {
+      defaulter();
       addEverything();
     }, 100);
   });
