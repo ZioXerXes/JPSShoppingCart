@@ -5,6 +5,7 @@ var sum = function (acc, x) {
 var updateItemTotal = function (ele) {
   var priceNumber = parseFloat($(ele).children('.price').text());
   var quantityNumber = parseFloat($(ele).find('.quantity input').val());
+  console.log(quantityNumber)
   var totalPrice = priceNumber * quantityNumber;
   $(ele).children('.total').html(totalPrice);
   
@@ -58,3 +59,12 @@ $(document).ready(function () {
     '</tr>');
   });
   });
+
+  let defaulter = function () {
+    var quantitySelector = document.querySelector('input[name="realQuantity"]');
+    var totalSelector = $('td.total').text();
+    if (!quantitySelector.value) {
+      quantitySelector.value = '0';
+    };
+    updateItemTotal();
+  };
