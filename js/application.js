@@ -5,13 +5,11 @@ var sum = function (acc, x) {
 var updateItemTotal = function (ele) {
   var priceNumber = parseFloat($(ele).children('.price').text());
   var quantityNumber = parseFloat($(ele).find('.quantity input').val());
-  if (quantityNumber == NaN) {
+  if (quantityNumber == "") {
     $(ele).find('.quantity input').val(0);
   };
-  console.log(quantityNumber)
   var totalPrice = priceNumber * quantityNumber;
-  $(ele).children('.total').html(totalPrice);
-  
+  $(ele).children('.total').html("$" + totalPrice);
   return totalPrice;
 }
 
@@ -34,21 +32,16 @@ $(document).on('click', '.btn.remove', function (event) {
 
 $(document).ready(function () {
   addEverything();
-
-  var defaulter = function () {
-    var quantitySelector = document.querySelector('input[name="realQuantity"]');
-    var totalSelector = $('td.total').text();
-    if (!quantitySelector.value) {
-      quantitySelector.value = '0';
-    };
-    updateItemTotal();
-  };
-  
   var timeout;
   $(document).on('input', 'tr input', function () {
+    if (this.value=='') {
+      this.value=0
+    };
+    if(this.value.length > 1 && this.value.charAt(0)==0) {
+      this.value = this.value.slice(1);
+    };
     clearTimeout(timeout);
     timeout = setTimeout(function () {
-      defaulter();
       addEverything();
     }, 100);
   });
@@ -67,17 +60,8 @@ $(document).ready(function () {
     '<td class="name col-xs-3">' + name + '</td>' +
     '<td class="price col-xs-3">' + price + '</td>' +
     '<td class="quantity col-xs-3"><input type="number" value="0" /></td>' +
-    '<td class="total">0</td>' +
+    '<td class="total">$0</td>' +
     '<td><button class="btn btn-light btn-sm remove">Remove</button></td>' +
     '</tr>');
   });
   });
-
-  let defaulter = function () {
-    var quantitySelector = document.querySelector('input[name="realQuantity"]');
-    var totalSelector = $('td.total').text();
-    if (!quantitySelector.value) {
-      quantitySelector.value = '0';
-    };
-    updateItemTotal();
-  };
